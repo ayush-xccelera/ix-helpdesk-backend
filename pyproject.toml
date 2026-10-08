@@ -1,0 +1,15 @@
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "RUF"]
+ignore = [
+    # FastAPI's dependency-injection idiom is `Depends(...)`/`Query(...)` used
+    # directly as an argument default — that is correct, idiomatic FastAPI,
+    # not the mutable-default-argument bug this rule is designed to catch.
+    "B008",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
